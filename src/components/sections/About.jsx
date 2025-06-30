@@ -1,6 +1,6 @@
 import { RevealOnScroll } from "../RevealOnScroll";
 
-export const About = () => {
+export const About = ({ isDarkMode }) => {
   const frontendSkills = [
     "React",
     "Next.js",
@@ -24,15 +24,21 @@ export const About = () => {
             About Me
           </h2>
 
-          <div className="rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all">
-            <p className="text-gray-300 mb-6">
+          <div className={`rounded-xl p-8 border hover:-translate-y-1 transition-all ${
+            isDarkMode ? "border-white/10" : "border-gray-200"
+          }`}>
+            <p className={`mb-6 ${
+              isDarkMode ? "text-gray-300" : "text-gray-700"
+            }`}>
               Passionate developer with expertise in building scalable web
               applications and creating innovative solutions.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="rounded-xl p-6 hover:-translate-y-1 transition-all">
-                <h3 className="text-xl font-bold mb-4"> Frontend</h3>
+                <h3 className={`text-xl font-bold mb-4 ${
+                  isDarkMode ? "text-white" : "text-gray-900"
+                }`}> Frontend</h3>
                 <div className="flex flex-wrap gap-2">
                   {frontendSkills.map((tech, key) => (
                     <span
@@ -49,7 +55,9 @@ export const About = () => {
 
               
               <div className="rounded-xl p-6 hover:-translate-y-1 transition-all">
-                <h3 className="text-xl font-bold mb-4"> Backend</h3>
+                <h3 className={`text-xl font-bold mb-4 ${
+                  isDarkMode ? "text-white" : "text-gray-900"
+                }`}> Backend</h3>
                 <div className="flex flex-wrap gap-2">
                   {backendSkills.map((tech, key) => (
                     <span
@@ -65,7 +73,9 @@ export const About = () => {
               </div>
 
               <div className="rounded-xl p-6 hover:-translate-y-1 transition-all">
-                <h3 className="text-xl font-bold mb-4"> Devops</h3>
+                <h3 className={`text-xl font-bold mb-4 ${
+                  isDarkMode ? "text-white" : "text-gray-900"
+                }`}> Devops</h3>
                 <div className="flex flex-wrap gap-2">
                   {devopsSkills.map((tech, key) => (
                     <span
@@ -85,9 +95,15 @@ export const About = () => {
           </div>
 
           <div className="mt-8">
-            <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all">
-              <h3 className="text-xl font-bold mb-4"> 🏫 Education </h3>
-              <ul className="list-disc list-inside text-gray-300 space-y-2">
+            <div className={`p-6 rounded-xl border hover:-translate-y-1 transition-all ${
+              isDarkMode ? "border-white/10" : "border-gray-200"
+            }`}>
+              <h3 className={`text-xl font-bold mb-4 ${
+                isDarkMode ? "text-white" : "text-gray-900"
+              }`}> 🏫 Education </h3>
+              <ul className={`list-disc list-inside space-y-2 ${
+                isDarkMode ? "text-gray-300" : "text-gray-700"
+              }`}>
                 <li>
                   <strong> B.Tech. in Computer Science Engineering </strong> - Lovely Professional University
                   (2022-2026) CGPA-8.20

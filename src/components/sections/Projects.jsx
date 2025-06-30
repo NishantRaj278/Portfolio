@@ -1,6 +1,6 @@
 import { RevealOnScroll } from "../RevealOnScroll";
 
-export const Projects = () => {
+export const Projects = ({ isDarkMode }) => {
   return (
     <section
       id="projects"
@@ -13,9 +13,15 @@ export const Projects = () => {
             Featured Projects
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition">
-              <h3 className="text-xl font-bold mb-2"> Socialure</h3>
-              <p className="text-gray-400 mb-4">
+            <div className={`p-6 rounded-xl border hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition ${
+              isDarkMode ? "border-white/10" : "border-gray-200"
+            }`}>
+              <h3 className={`text-xl font-bold mb-2 ${
+                isDarkMode ? "text-white" : "text-gray-900"
+              }`}> Socialure</h3>
+              <p className={`mb-4 ${
+                isDarkMode ? "text-gray-400" : "text-gray-600"
+              }`}>
               Socialure is a full-stack social media platform that enables users to connect, share posts, and interact in real-time through a clean and responsive UI.
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
@@ -41,15 +47,19 @@ export const Projects = () => {
               </div>
             </div>
             <div
-              className="
-              glass p-6 rounded-xl border border-white/10 
+              className={`
+              glass p-6 rounded-xl border 
               hover:-translate-y-1 hover:border-blue-500/30
               hover:shadow-[0_4px_20px_rgba(59,130,246,0.1)]
-              transition-all
-            "
+              transition-all ${isDarkMode ? "border-white/10" : "border-gray-200"}
+            `}
             >
-              <h3 className="text-xl font-bold mb-2">Blabz</h3>
-              <p className="text-gray-400 mb-4">
+              <h3 className={`text-xl font-bold mb-2 ${
+                isDarkMode ? "text-white" : "text-gray-900"
+              }`}>Blabz</h3>
+              <p className={`mb-4 ${
+                isDarkMode ? "text-gray-400" : "text-gray-600"
+              }`}>
               Blabz is a dynamic blogging platform where users can create, edit, and interact with blog posts in a seamless, responsive environment.
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
@@ -79,15 +89,19 @@ export const Projects = () => {
             </div>
 
             <div
-              className="
-              glass p-6 rounded-xl border border-white/10 
+              className={`
+              glass p-6 rounded-xl border 
               hover:-translate-y-1 hover:border-blue-500/30
               hover:shadow-[0_4px_20px_rgba(59,130,246,0.1)]
-              transition-all
-            "
+              transition-all ${isDarkMode ? "border-white/10" : "border-gray-200"}
+            `}
             >
-              <h3 className="text-xl font-bold mb-2">ChatNest</h3>
-              <p className="text-gray-400 mb-4">
+              <h3 className={`text-xl font-bold mb-2 ${
+                isDarkMode ? "text-white" : "text-gray-900"
+              }`}>ChatNest</h3>
+              <p className={`mb-4 ${
+                isDarkMode ? "text-gray-400" : "text-gray-600"
+              }`}>
               ChatNest is a real-time chat application that supports instant messaging and media sharing with a responsive, themeable UI.
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
