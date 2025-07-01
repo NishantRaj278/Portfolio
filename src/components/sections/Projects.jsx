@@ -1,4 +1,5 @@
 import { RevealOnScroll } from "../RevealOnScroll";
+import { MdOutlinePlayCircleOutline } from "react-icons/md";
 
 export const Projects = ({ isDarkMode }) => {
   return (
@@ -44,6 +45,15 @@ export const Projects = ({ isDarkMode }) => {
                 >
                   View Project →
                 </a>
+                <a
+                  href="https://socialure.vercel.app/" target="_blank"
+                  className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-all text-sm font-medium hover:shadow-lg hover:scale-105"
+                >
+                  <div className="flex items-center gap-2">
+                    <MdOutlinePlayCircleOutline className="inline-block text-lg" />
+                    <span>Live Demo</span>
+                  </div>
+                </a>
               </div>
             </div>
             <div
@@ -85,6 +95,7 @@ export const Projects = ({ isDarkMode }) => {
                 >
                   View Project →
                 </a>
+                
               </div>
             </div>
 
@@ -128,6 +139,15 @@ export const Projects = ({ isDarkMode }) => {
                   className="text-blue-400 hover:text-blue-300 transition-colors my-4"
                 >
                   View Project →
+                </a>
+                <a
+                  href="https://chat-nest-flax.vercel.app/" target="_blank"
+                  className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-all text-sm font-medium hover:shadow-lg hover:scale-105"
+                >
+                  <div className="flex items-center gap-2">
+                    <MdOutlinePlayCircleOutline className="inline-block text-lg" />
+                    <span>Live Demo</span>
+                  </div>
                 </a>
               </div>
             </div>
