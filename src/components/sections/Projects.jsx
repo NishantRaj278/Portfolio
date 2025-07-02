@@ -1,158 +1,222 @@
 import { RevealOnScroll } from "../RevealOnScroll";
-import { MdOutlinePlayCircleOutline } from "react-icons/md";
+import { MdOutlinePlayCircleOutline, MdCode, MdWeb } from "react-icons/md";
 
 export const Projects = ({ isDarkMode }) => {
   return (
     <section
       id="projects"
-      className="min-h-screen flex items-center justify-center py-20"
+      className={`min-h-screen flex items-center justify-center py-20 relative overflow-hidden $`}
     >
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/5 rounded-full blur-xl animate-float"></div>
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-cyan-500/5 rounded-full blur-xl animate-float" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-purple-500/5 rounded-full blur-xl animate-float" style={{animationDelay: '4s'}}></div>
+      </div>
+
       <RevealOnScroll>
-        <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
-            {" "}
-            Featured Projects
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className={`p-6 rounded-xl border hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition ${
-              isDarkMode ? "border-white/10" : "border-gray-200"
+        <div className="max-w-6xl mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-400 bg-clip-text text-transparent">
+              Featured Projects
+            </h2>
+            <p className={`text-lg max-w-2xl mx-auto ${
+              isDarkMode ? "text-gray-400" : "text-gray-600"
             }`}>
-              <h3 className={`text-xl font-bold mb-2 ${
-                isDarkMode ? "text-white" : "text-gray-900"
-              }`}> Socialure</h3>
-              <p className={`mb-4 ${
-                isDarkMode ? "text-gray-400" : "text-gray-600"
-              }`}>
-              Socialure is a full-stack social media platform that enables users to connect, share posts, and interact in real-time through a clean and responsive UI.
-              </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {["Next.js", "PostgreSQL", "Prisma", "TypeScript", "Tailwind CSS"].map((tech, key) => (
-                  <span
-                    key={key}
-                    className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 
-                                    hover:shadow-[0_2px_8px_rgba(59,130,246,0.1)] transition-all
-                    "
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex justify-between items-center">
-                <a
-                  href="https://github.com/NishantRaj278/Socialure" target="_blank"
-                  className="text-blue-400 hover:text-blue-300 transition-colors my-4"
-                >
-                  View Project →
-                </a>
-                <a
-                  href="https://socialure.vercel.app/" target="_blank"
-                  className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-all text-sm font-medium hover:shadow-lg hover:scale-105"
-                >
-                  <div className="flex items-center gap-2">
-                    <MdOutlinePlayCircleOutline className="inline-block text-lg" />
-                    <span>Live Demo</span>
+              A collection of projects showcasing full-stack development skills and modern web technologies
+            </p>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Socialure Project */}
+            <div className={`group relative overflow-hidden p-8 rounded-2xl border hover:-translate-y-3 hover:shadow-2xl transition-all duration-500 hover-lift ${
+              isDarkMode ? "border-white/10 hover:border-blue-500/50 bg-gray-900" : "border-gray-200 hover:border-blue-300 bg-white"
+            }`}>
+              {/* Animated background gradient overlay */}
+              <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
+                isDarkMode ? "bg-gradient-to-br from-blue-500/10 to-cyan-500/10" : "bg-gradient-to-br from-blue-100/50 to-cyan-100/50"
+              }`}></div>
+              
+              {/* Decorative elements */}
+              <div className="absolute top-6 right-6 w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
+              <div className="absolute top-12 right-8 w-2 h-2 bg-cyan-500 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+              <div className="absolute bottom-8 left-6 w-4 h-4 bg-purple-500/30 rounded-full animate-pulse" style={{animationDelay: '2s'}}></div>
+              
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-blue-500/10 rounded-lg">
+                    <MdWeb className="text-2xl text-blue-500" />
                   </div>
-                </a>
-              </div>
-            </div>
-            <div
-              className={`
-              glass p-6 rounded-xl border 
-              hover:-translate-y-1 hover:border-blue-500/30
-              hover:shadow-[0_4px_20px_rgba(59,130,246,0.1)]
-              transition-all ${isDarkMode ? "border-white/10" : "border-gray-200"}
-            `}
-            >
-              <h3 className={`text-xl font-bold mb-2 ${
-                isDarkMode ? "text-white" : "text-gray-900"
-              }`}>Blabz</h3>
-              <p className={`mb-4 ${
-                isDarkMode ? "text-gray-400" : "text-gray-600"
-              }`}>
-              Blabz is a dynamic blogging platform where users can create, edit, and interact with blog posts in a seamless, responsive environment.
-              </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"].map((tech, key) => (
-                  <span
-                    key={key}
-                    className="
-                      bg-blue-500/10 text-blue-500 py-1 px-3 
-                      rounded-full text-sm
-                      transition
-                      hover:bg-blue-500/20 hover:-translate-y-0.5
-                      hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)]
-                    "
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              <div className="flex justify-between items-center">
-                <a
-                  href="https://github.com/NishantRaj278/Blabz" target="_blank"
-                  className="text-blue-400 hover:text-blue-300 transition-colors my-4"
-                >
-                  View Project →
-                </a>
+                  <h3 className={`text-2xl font-bold group-hover:text-blue-400 transition-colors duration-300 ${
+                    isDarkMode ? "text-white" : "text-gray-900"
+                  }`}>Socialure</h3>
+                </div>
                 
-              </div>
-            </div>
-
-            <div
-              className={`
-              glass p-6 rounded-xl border 
-              hover:-translate-y-1 hover:border-blue-500/30
-              hover:shadow-[0_4px_20px_rgba(59,130,246,0.1)]
-              transition-all ${isDarkMode ? "border-white/10" : "border-gray-200"}
-            `}
-            >
-              <h3 className={`text-xl font-bold mb-2 ${
-                isDarkMode ? "text-white" : "text-gray-900"
-              }`}>ChatNest</h3>
-              <p className={`mb-4 ${
-                isDarkMode ? "text-gray-400" : "text-gray-600"
-              }`}>
-              ChatNest is a real-time chat application that supports instant messaging and media sharing with a responsive, themeable UI.
-              </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "Socket.IO"].map(
-                  (tech) => (
+                <p className={`mb-6 leading-relaxed ${
+                  isDarkMode ? "text-gray-400" : "text-gray-600"
+                }`}>
+                  A full-stack social media platform enabling users to connect, share posts, and interact in real-time through a clean and responsive UI with modern features.
+                </p>
+                
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {["Next.js", "PostgreSQL", "Prisma", "TypeScript", "Tailwind CSS"].map((tech, key) => (
                     <span
-                      key={tech}
-                      className="
-                      bg-blue-500/10 text-blue-500 py-1 px-3 
-                      rounded-full text-sm
-                      transition
-                      hover:bg-blue-500/20 hover:-translate-y-0.5
-                      hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)]
-                    "
+                      key={key}
+                      className="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 text-blue-500 py-2 px-4 rounded-full text-sm font-medium hover:from-blue-500/20 hover:to-cyan-500/20 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-default"
                     >
                       {tech}
                     </span>
-                  )
-                )}
-              </div>
-              <div className="flex justify-between items-center">
-                <a
-                  href="https://github.com/NishantRaj278/ChatNest" target="_blank"
-                  className="text-blue-400 hover:text-blue-300 transition-colors my-4"
-                >
-                  View Project →
-                </a>
-                <a
-                  href="https://chat-nest-flax.vercel.app/" target="_blank"
-                  className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-all text-sm font-medium hover:shadow-lg hover:scale-105"
-                >
-                  <div className="flex items-center gap-2">
-                    <MdOutlinePlayCircleOutline className="inline-block text-lg" />
-                    <span>Live Demo</span>
-                  </div>
-                </a>
+                  ))}
+                </div>
+
+                <div className="flex justify-between items-center">
+                  <a
+                    href="https://github.com/NishantRaj278/Socialure" 
+                    target="_blank"
+                    className={`flex items-center gap-2 font-medium transition-all duration-300 hover:-translate-y-0.5 ${
+                      isDarkMode ? "text-blue-400 hover:text-blue-300" : "text-blue-600 hover:text-blue-700"
+                    }`}
+                  >
+                    <MdCode className="text-lg" />
+                    View Code
+                  </a>
+                  <a
+                    href="https://socialure.vercel.app/" 
+                    target="_blank"
+                    className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-6 py-3 rounded-xl transition-all duration-300 font-medium hover:shadow-xl hover:scale-105 group/btn"
+                  >
+                    <div className="flex items-center gap-2">
+                      <MdOutlinePlayCircleOutline className="text-lg group-hover/btn:animate-spin" />
+                      <span>Live Demo</span>
+                    </div>
+                  </a>
+                </div>
               </div>
             </div>
 
-            
+            {/* Blabz Project */}
+            <div className={`group relative overflow-hidden p-8 rounded-2xl border hover:-translate-y-3 hover:shadow-2xl transition-all duration-500 hover-lift ${
+              isDarkMode ? "border-white/10 hover:border-green-500/50 bg-gray-900" : "border-gray-200 hover:border-green-300 bg-white"
+            }`}>
+              {/* Animated background gradient overlay */}
+              <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
+                isDarkMode ? "bg-gradient-to-br from-green-500/10 to-emerald-500/10" : "bg-gradient-to-br from-green-100/50 to-emerald-100/50"
+              }`}></div>
+              
+              {/* Decorative elements */}
+              <div className="absolute top-6 right-6 w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+              <div className="absolute top-12 right-8 w-2 h-2 bg-emerald-500 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+              <div className="absolute bottom-8 left-6 w-4 h-4 bg-teal-500/30 rounded-full animate-pulse" style={{animationDelay: '2s'}}></div>
+              
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-green-500/10 rounded-lg">
+                    <MdCode className="text-2xl text-green-500" />
+                  </div>
+                  <h3 className={`text-2xl font-bold group-hover:text-green-400 transition-colors duration-300 ${
+                    isDarkMode ? "text-white" : "text-gray-900"
+                  }`}>Blabz</h3>
+                </div>
+                
+                <p className={`mb-6 leading-relaxed ${
+                  isDarkMode ? "text-gray-400" : "text-gray-600"
+                }`}>
+                  A dynamic blogging platform where users can create, edit, and interact with blog posts in a seamless, responsive environment with rich content features.
+                </p>
+                
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"].map((tech, key) => (
+                    <span
+                      key={key}
+                      className="bg-gradient-to-r from-green-500/10 to-emerald-500/10 text-green-500 py-2 px-4 rounded-full text-sm font-medium hover:from-green-500/20 hover:to-emerald-500/20 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-default"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex justify-between items-center">
+                  <a
+                    href="https://github.com/NishantRaj278/Blabz" 
+                    target="_blank"
+                    className={`flex items-center gap-2 font-medium transition-all duration-300 hover:-translate-y-0.5 ${
+                      isDarkMode ? "text-green-400 hover:text-green-300" : "text-green-600 hover:text-green-700"
+                    }`}
+                  >
+                    <MdCode className="text-lg" />
+                    View Code
+                  </a>
+                  <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 text-green-500 px-6 py-3 rounded-xl font-medium cursor-not-allowed">
+                    Coming Soon
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* ChatNest Project */}
+            <div className={`group relative overflow-hidden p-8 rounded-2xl border hover:-translate-y-3 hover:shadow-2xl transition-all duration-500 hover-lift ${
+              isDarkMode ? "border-white/10 hover:border-purple-500/50 bg-gray-900" : "border-gray-200 hover:border-purple-300 bg-white"
+            }`}>
+              {/* Animated background gradient overlay */}
+              <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
+                isDarkMode ? "bg-gradient-to-br from-purple-500/10 to-pink-500/10" : "bg-gradient-to-br from-purple-100/50 to-pink-100/50"
+              }`}></div>
+              
+              {/* Decorative elements */}
+              <div className="absolute top-6 right-6 w-3 h-3 bg-purple-500 rounded-full animate-pulse"></div>
+              <div className="absolute top-12 right-8 w-2 h-2 bg-pink-500 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+              <div className="absolute bottom-8 left-6 w-4 h-4 bg-indigo-500/30 rounded-full animate-pulse" style={{animationDelay: '2s'}}></div>
+              
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-purple-500/10 rounded-lg">
+                    <MdWeb className="text-2xl text-purple-500" />
+                  </div>
+                  <h3 className={`text-2xl font-bold group-hover:text-purple-400 transition-colors duration-300 ${
+                    isDarkMode ? "text-white" : "text-gray-900"
+                  }`}>ChatNest</h3>
+                </div>
+                
+                <p className={`mb-6 leading-relaxed ${
+                  isDarkMode ? "text-gray-400" : "text-gray-600"
+                }`}>
+                  A real-time chat application supporting instant messaging and media sharing with a responsive, themeable UI and seamless user experience.
+                </p>
+                
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "Socket.IO"].map((tech, key) => (
+                    <span
+                      key={key}
+                      className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 text-purple-500 py-2 px-4 rounded-full text-sm font-medium hover:from-purple-500/20 hover:to-pink-500/20 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-default"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex justify-between items-center">
+                  <a
+                    href="https://github.com/NishantRaj278/ChatNest" 
+                    target="_blank"
+                    className={`flex items-center gap-2 font-medium transition-all duration-300 hover:-translate-y-0.5 ${
+                      isDarkMode ? "text-purple-400 hover:text-purple-300" : "text-purple-600 hover:text-purple-700"
+                    }`}
+                  >
+                    <MdCode className="text-lg" />
+                    View Code
+                  </a>
+                  <a
+                    href="https://chat-nest-flax.vercel.app/" 
+                    target="_blank"
+                    className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-3 rounded-xl transition-all duration-300 font-medium hover:shadow-xl hover:scale-105 group/btn"
+                  >
+                    <div className="flex items-center gap-2">
+                      <MdOutlinePlayCircleOutline className="text-lg group-hover/btn:animate-spin" />
+                      <span>Live Demo</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </RevealOnScroll>

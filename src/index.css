@@ -7,6 +7,48 @@ body {
   font-family: "Space Grotesk", sans-serif;
   background: #0a0a0a;
   color: #f3f4f6;
+  scroll-behavior: smooth;
+}
+
+/* Enhanced smooth scrolling for all elements */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Optimize scroll performance */
+html {
+  scroll-padding-top: 80px; /* Account for fixed navbar */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body,
+  * {
+    scroll-behavior: auto;
+  }
+}
+
+/* Smooth scroll utility */
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #3b82f6, #06b6d4);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #2563eb, #0891b2);
 }
 
 @layer utilities {
@@ -35,6 +77,334 @@ body {
 
   .animate-loading-bar {
     animation: loading 0.8s ease infinite;
+  }
+
+  /* Floating animation */
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Pulse glow animation */
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(59, 130, 246, 0.6),
+        0 0 60px rgba(59, 130, 246, 0.4);
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  /* Gradient animation */
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 4s ease infinite;
+  }
+
+  /* Typing animation */
+  @keyframes typewriter {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  .typewriter {
+    overflow: hidden;
+    border-right: 2px solid #3b82f6;
+    white-space: nowrap;
+    animation: typewriter 4s steps(40, end), blink 0.8s step-end infinite;
+  }
+
+  /* Particle background */
+  .particles-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    background: radial-gradient(
+        circle at 20% 80%,
+        rgba(59, 130, 246, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        rgba(6, 182, 212, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 40% 40%,
+        rgba(139, 92, 246, 0.1) 0%,
+        transparent 50%
+      );
+  }
+
+  /* Glassmorphism effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .glass-light {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Neon glow effects */
+  .neon-blue {
+    box-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6, 0 0 30px #3b82f6;
+  }
+
+  .neon-cyan {
+    box-shadow: 0 0 10px #06b6d4, 0 0 20px #06b6d4, 0 0 30px #06b6d4;
+  }
+
+  /* Shimmer effect */
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    animation: shimmer 2s infinite;
+  }
+
+  /* Text glow effect */
+  .text-glow {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor,
+      0 0 30px currentColor;
+  }
+
+  /* Hover lift effect */
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Fade in animation */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out;
+  }
+
+  /* Enhanced shimmer for loading bar */
+  .animate-shimmer {
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* Flicker animation for .dev text */
+  @keyframes flicker {
+    0%,
+    18%,
+    22%,
+    25%,
+    53%,
+    57%,
+    100% {
+      opacity: 1;
+    }
+    20%,
+    24%,
+    55% {
+      opacity: 0.4;
+    }
+    21%,
+    56% {
+      opacity: 0.1;
+    }
+  }
+
+  .animate-flicker {
+    animation: flicker 2s infinite;
+  }
+
+  /* Theme transition effects */
+  @keyframes theme-blur {
+    0% {
+      filter: blur(0px);
+    }
+    50% {
+      filter: blur(10px);
+    }
+    100% {
+      filter: blur(0px);
+    }
+  }
+
+  @keyframes theme-fade-out {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .theme-transitioning {
+    animation: theme-blur 1.5s ease-in-out, theme-fade-out 1.5s ease-in-out;
+  }
+
+  /* Create a smooth overlay effect for theme transition */
+  .theme-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .theme-overlay.active {
+    opacity: 1;
+  }
+
+  .theme-overlay.light-to-dark {
+    background: linear-gradient(
+      45deg,
+      rgba(17, 24, 39, 0) 0%,
+      rgba(17, 24, 39, 0.1) 25%,
+      rgba(17, 24, 39, 0.3) 50%,
+      rgba(17, 24, 39, 0.1) 75%,
+      rgba(17, 24, 39, 0) 100%
+    );
+    animation: overlay-darken 5s ease-in-out;
+  }
+
+  .theme-overlay.dark-to-light {
+    background: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.1) 25%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0.1) 75%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    animation: overlay-lighten 5s ease-in-out;
+  }
+
+  @keyframes overlay-darken {
+    0% {
+      background: linear-gradient(
+        45deg,
+        rgba(17, 24, 39, 0) 0%,
+        rgba(17, 24, 39, 0) 100%
+      );
+    }
+    50% {
+      background: linear-gradient(
+        45deg,
+        rgba(17, 24, 39, 0.4) 0%,
+        rgba(17, 24, 39, 0.6) 100%
+      );
+    }
+    100% {
+      background: linear-gradient(
+        45deg,
+        rgba(17, 24, 39, 0) 0%,
+        rgba(17, 24, 39, 0) 100%
+      );
+    }
+  }
+
+  @keyframes overlay-lighten {
+    0% {
+      background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    }
+    50% {
+      background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(255, 255, 255, 0.6) 100%
+      );
+    }
+    100% {
+      background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    }
   }
 }
 
