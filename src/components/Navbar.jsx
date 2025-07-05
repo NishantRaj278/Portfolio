@@ -4,6 +4,7 @@ import { MdMenu, MdClose, MdHome, MdPerson, MdWork, MdEmail, MdWbSunny, MdNightl
 export const Navbar = ({ menuOpen, setMenuOpen, isDarkMode, setIsDarkMode }) => {
   const [scrolled, setScrolled] = useState(false);
   const [isThemeTransitioning, setIsThemeTransitioning] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -13,6 +14,21 @@ export const Navbar = ({ menuOpen, setMenuOpen, isDarkMode, setIsDarkMode }) => 
     const handleScroll = () => {
       const isScrolled = window.scrollY > 50;
       setScrolled(isScrolled);
+
+      // Determine active section
+      const sections = ['home', 'about', 'projects', 'contact'];
+      const scrollPosition = window.scrollY + 100; // Offset for better detection
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -88,25 +104,36 @@ export const Navbar = ({ menuOpen, setMenuOpen, isDarkMode, setIsDarkMode }) => 
           {/* Navigation Links */}
           <div className="flex flex-col py-4 space-y-1 flex-grow">
             {[
-              { name: 'Home', icon: MdHome, href: '#home', color: 'text-sky-400 hover:text-sky-300', bg: 'hover:bg-sky-50 dark:hover:bg-sky-900/20' },
-              { name: 'About', icon: MdPerson, href: '#about', color: 'text-cyan-400 hover:text-cyan-300', bg: 'hover:bg-cyan-50 dark:hover:bg-cyan-900/20' },
-              { name: 'Projects', icon: MdWork, href: '#projects', color: 'text-violet-400 hover:text-violet-300', bg: 'hover:bg-violet-50 dark:hover:bg-violet-900/20' },
-              { name: 'Contact', icon: MdEmail, href: '#contact', color: 'text-amber-400 hover:text-amber-300', bg: 'hover:bg-amber-50 dark:hover:bg-amber-900/20' }
-            ].map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className={`flex items-center space-x-3 mx-2 px-3 py-3 rounded-xl transition-all duration-300 hover:-translate-x-1 hover:shadow-lg relative group/item ${item.bg}`}
-              >
-                <item.icon className={`w-6 h-6 flex-shrink-0 transition-all duration-300 ${item.color} drop-shadow-md hover:scale-110`} />
-                <span className={`opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap font-medium ${
-                  isDarkMode ? "text-gray-300 group-hover:text-white" : "text-gray-600 group-hover:text-gray-900"
-                }`}>
-                  {item.name}
-                </span>
-                <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-0 bg-gradient-to-b from-sky-400 to-cyan-400 group-hover/item:h-8 transition-all duration-300 rounded-r shadow-lg"></div>
-              </a>
-            ))}
+              { name: 'Home', icon: MdHome, href: '#home', section: 'home', color: 'text-sky-400 hover:text-sky-300', bg: 'hover:bg-sky-50 dark:hover:bg-sky-900/20' },
+              { name: 'About', icon: MdPerson, href: '#about', section: 'about', color: 'text-cyan-400 hover:text-cyan-300', bg: 'hover:bg-cyan-50 dark:hover:bg-cyan-900/20' },
+              { name: 'Projects', icon: MdWork, href: '#projects', section: 'projects', color: 'text-violet-400 hover:text-violet-300', bg: 'hover:bg-violet-50 dark:hover:bg-violet-900/20' },
+              { name: 'Contact', icon: MdEmail, href: '#contact', section: 'contact', color: 'text-amber-400 hover:text-amber-300', bg: 'hover:bg-amber-50 dark:hover:bg-amber-900/20' }
+            ].map((item) => {
+              const isActive = activeSection === item.section;
+              return (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className={`flex items-center space-x-3 mx-2 px-3 py-3 rounded-xl transition-all duration-300 hover:-translate-x-1 hover:shadow-lg relative group/item ${item.bg} ${
+                    isActive ? 'bg-opacity-20' : ''
+                  }`}
+                >
+                  <item.icon className={`w-6 h-6 flex-shrink-0 transition-all duration-300 ${item.color} drop-shadow-md hover:scale-110 ${
+                    isActive ? 'scale-110' : ''
+                  }`} />
+                  <span className={`opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap font-medium ${
+                    isDarkMode ? "text-gray-300 group-hover:text-white" : "text-gray-600 group-hover:text-gray-900"
+                  } ${isActive ? 'font-semibold' : ''}`}>
+                    {item.name}
+                  </span>
+                  <div className={`absolute left-0 top-1/2 transform -translate-y-1/2 w-1 rounded-r shadow-lg transition-all duration-300 ${
+                    isActive 
+                      ? 'h-8 bg-gradient-to-b from-sky-400 to-cyan-400' 
+                      : 'h-0 bg-gradient-to-b from-sky-400 to-cyan-400 group-hover/item:h-8'
+                  }`}></div>
+                </a>
+              );
+            })}
           </div>
 
           {/* Theme Toggle */}
@@ -212,28 +239,36 @@ export const Navbar = ({ menuOpen, setMenuOpen, isDarkMode, setIsDarkMode }) => 
             }`}>
               <div className="px-4 py-6 space-y-2">
                 {[
-                  { name: 'Home', icon: MdHome, color: 'text-sky-400', bg: 'hover:bg-sky-50 dark:hover:bg-sky-900/20' },
-                  { name: 'About', icon: MdPerson, color: 'text-cyan-400', bg: 'hover:bg-cyan-50 dark:hover:bg-cyan-900/20' },
-                  { name: 'Projects', icon: MdWork, color: 'text-violet-400', bg: 'hover:bg-violet-50 dark:hover:bg-violet-900/20' },
-                  { name: 'Contact', icon: MdEmail, color: 'text-amber-400', bg: 'hover:bg-amber-50 dark:hover:bg-amber-900/20' }
-                ].map((item, index) => (
-                  <a
-                    key={item.name}
-                    href={`#${item.name.toLowerCase()}`}
-                    onClick={() => setMenuOpen(false)}
-                    className={`flex items-center space-x-3 px-4 py-3 rounded-xl font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md ${item.bg} ${
-                      isDarkMode 
-                        ? "text-gray-300 hover:text-white" 
-                        : "text-gray-600 hover:text-gray-900"
-                    }`}
-                    style={{
-                      animationDelay: `${index * 50}ms`
-                    }}
-                  >
-                    <item.icon className={`w-5 h-5 ${item.color} drop-shadow-sm hover:scale-110 transition-transform duration-200`} />
-                    <span>{item.name}</span>
-                  </a>
-                ))}
+                  { name: 'Home', icon: MdHome, section: 'home', color: 'text-sky-400', bg: 'hover:bg-sky-50 dark:hover:bg-sky-900/20' },
+                  { name: 'About', icon: MdPerson, section: 'about', color: 'text-cyan-400', bg: 'hover:bg-cyan-50 dark:hover:bg-cyan-900/20' },
+                  { name: 'Projects', icon: MdWork, section: 'projects', color: 'text-violet-400', bg: 'hover:bg-violet-50 dark:hover:bg-violet-900/20' },
+                  { name: 'Contact', icon: MdEmail, section: 'contact', color: 'text-amber-400', bg: 'hover:bg-amber-50 dark:hover:bg-amber-900/20' }
+                ].map((item, index) => {
+                  const isActive = activeSection === item.section;
+                  return (
+                    <a
+                      key={item.name}
+                      href={`#${item.name.toLowerCase()}`}
+                      onClick={() => setMenuOpen(false)}
+                      className={`flex items-center space-x-3 px-4 py-3 rounded-xl font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md relative ${item.bg} ${
+                        isDarkMode 
+                          ? "text-gray-300 hover:text-white" 
+                          : "text-gray-600 hover:text-gray-900"
+                      } ${isActive ? 'bg-opacity-20 font-semibold' : ''}`}
+                      style={{
+                        animationDelay: `${index * 50}ms`
+                      }}
+                    >
+                      <item.icon className={`w-5 h-5 ${item.color} drop-shadow-sm hover:scale-110 transition-transform duration-200 ${
+                        isActive ? 'scale-110' : ''
+                      }`} />
+                      <span>{item.name}</span>
+                      {isActive && (
+                        <div className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-sky-400 to-cyan-400 rounded-full"></div>
+                      )}
+                    </a>
+                  );
+                })}
               </div>
             </div>
           )}
