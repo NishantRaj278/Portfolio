@@ -406,7 +406,7 @@ export const Projects = ({ isDarkMode }) => {
                     View Code
                   </a>
                   <a
-                    href="https://chat-nest-flax.vercel.app/"
+                    href="https://chatnest-1-1.onrender.com/"
                     target="_blank"
                     className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-3 rounded-xl transition-all duration-300 font-medium hover:shadow-xl hover:scale-105 group/btn"
                   >
