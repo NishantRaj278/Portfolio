@@ -1,11 +1,201 @@
 import { RevealOnScroll } from "../RevealOnScroll";
-import { MdOutlinePlayCircleOutline, MdCode, MdWeb } from "react-icons/md";
+import {
+  MdOutlinePlayCircleOutline,
+  MdCode,
+  MdArrowBack,
+  MdArrowForward,
+  MdPsychology,
+  MdPeople,
+  MdAutoAwesome,
+  MdCreate,
+  MdVolunteerActivism,
+  MdChat,
+} from "react-icons/md";
+import { useState, useEffect } from "react";
 
 export const Projects = ({ isDarkMode }) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  // Project data
+  const projects = [
+    {
+      id: 1,
+      title: "CiteMind",
+      description:
+        "An AI-powered research platform that transforms how you explore and visualize academic literature. CiteMind uses advanced AI and data processing with HuggingFace, Pinecone vector database, and custom AI pipelines to create interactive knowledge graphs and dynamic visualizations of research connections.",
+      technologies: [
+        "Next.js",
+        "HuggingFace API",
+        "Pinecone",
+        "MongoDB",
+        "Chart.js",
+        "D3.js",
+        "TypeScript",
+      ],
+      githubUrl: "https://github.com/NishantRaj278/CiteMind",
+      liveUrl: "https://citemiind.vercel.app/",
+      color: "indigo",
+      gradient: "from-indigo-500/10 to-violet-500/10",
+      borderGradient: "hover:border-indigo-500/50",
+      textColor: "text-indigo-500",
+      buttonGradient:
+        "from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600",
+      icon: <MdPsychology />,
+      image: "citemind.png",
+    },
+    {
+      id: 2,
+      title: "Socialure",
+      description:
+        "A full-stack social media platform enabling users to connect, share posts, and interact in real-time through a clean and responsive UI with modern features.",
+      technologies: [
+        "Next.js",
+        "PostgreSQL",
+        "Prisma",
+        "TypeScript",
+        "Tailwind CSS",
+      ],
+      githubUrl: "https://github.com/NishantRaj278/Socialure",
+      liveUrl: "https://socialure.vercel.app/",
+      color: "blue",
+      gradient: "from-blue-500/10 to-cyan-500/10",
+      borderGradient: "hover:border-blue-500/50",
+      textColor: "text-blue-500",
+      buttonGradient:
+        "from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600",
+      icon: <MdPeople />,
+      image: "socialure.png",
+    },
+    {
+      id: 3,
+      title: "CraftAI",
+      description:
+        "CraftAI is an AI-powered developer tool that instantly generates clean, production-ready React components from your text prompts. CraftAI helps you turn ideas into working React code in seconds.",
+      technologies: [
+        "Next.js",
+        "MongoDB",
+        "Node.js",
+        "Express",
+        "TypeScript",
+        "Tailwind CSS",
+      ],
+      githubUrl: "https://github.com/NishantRaj278/craftAI",
+      liveUrl: "https://craft-ai-pi.vercel.app/",
+      color: "cyan",
+      gradient: "from-cyan-500/10 to-blue-500/10",
+      borderGradient: "hover:border-cyan-500/50",
+      textColor: "text-cyan-500",
+      buttonGradient:
+        "from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600",
+      icon: <MdAutoAwesome />,
+      image: "craftai.png",
+    },
+    {
+      id: 4,
+      title: "Inklet",
+      description:
+        "A dynamic blogging platform where users can create, edit, and interact with blog posts in a seamless, responsive environment with rich content features.",
+      technologies: [
+        "Next.js",
+        "MongoDB",
+        "Prisma",
+        "TypeScript",
+        "Tailwind CSS",
+      ],
+      githubUrl: "https://github.com/NishantRaj278/Inklet",
+      liveUrl: "https://inklet-seven.vercel.app/",
+      color: "green",
+      gradient: "from-green-500/10 to-emerald-500/10",
+      borderGradient: "hover:border-green-500/50",
+      textColor: "text-green-500",
+      buttonGradient:
+        "from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600",
+      icon: <MdCreate />,
+      image: "inklet.png",
+    },
+    {
+      id: 5,
+      title: "HelpHive",
+      description:
+        "A community platform where neighbors connect to offer and request help, report local issues, and strengthen community bonds through real-time messaging and collaborative problem-solving.",
+      technologies: [
+        "React",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Socket.IO",
+        "Tailwind CSS",
+      ],
+      githubUrl: "https://github.com/NishantRaj278/HelpHive",
+      liveUrl: null,
+      color: "orange",
+      gradient: "from-orange-500/10 to-amber-500/10",
+      borderGradient: "hover:border-orange-500/50",
+      textColor: "text-orange-500",
+      buttonGradient:
+        "from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600",
+      icon: <MdVolunteerActivism />,
+      image: "helphive.png",
+    },
+    {
+      id: 6,
+      title: "ChatNest",
+      description:
+        "A real-time chat application supporting instant messaging and media sharing with a responsive, themeable UI and seamless user experience.",
+      technologies: [
+        "React",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Tailwind CSS",
+        "Socket.IO",
+      ],
+      githubUrl: "https://github.com/NishantRaj278/ChatNest",
+      liveUrl: "https://chatnest-1-1.onrender.com/",
+      color: "purple",
+      gradient: "from-purple-500/10 to-pink-500/10",
+      borderGradient: "hover:border-purple-500/50",
+      textColor: "text-purple-500",
+      buttonGradient:
+        "from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600",
+      icon: <MdChat />,
+      image: "chatnest.png", // Placeholder - add chatnest.png to public folder
+    },
+  ];
+
+  // Auto-play functionality
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % projects.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, projects.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % projects.length);
+    setIsAutoPlaying(false);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + projects.length) % projects.length);
+    setIsAutoPlaying(false);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+    setIsAutoPlaying(false);
+  };
+
   return (
     <section
       id="projects"
-      className={`min-h-screen flex items-center justify-center py-20 relative overflow-hidden $`}
+      className={`min-h-screen py-20 relative overflow-hidden ${
+        isDarkMode ? "bg-gray-950" : "bg-gray-50"
+      }`}
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -21,601 +211,271 @@ export const Projects = ({ isDarkMode }) => {
       </div>
 
       <RevealOnScroll>
-        <div className="max-w-6xl mx-auto px-4 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          {/* Header Section */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-400 bg-clip-text text-transparent">
               Featured Projects
             </h2>
             <p
-              className={`text-lg max-w-2xl mx-auto ${
+              className={`text-lg md:text-xl max-w-3xl mx-auto leading-relaxed ${
                 isDarkMode ? "text-gray-400" : "text-gray-600"
               }`}
             >
-              A collection of projects showcasing full-stack development skills
-              and modern web technologies
+              A showcase of full-stack applications, AI-powered tools, and
+              modern web solutions
             </p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* CiteMind Project */}
-            <div
-              className={`group relative overflow-hidden p-8 rounded-2xl border hover:-translate-y-3 hover:shadow-2xl transition-all duration-500 hover-lift ${
-                isDarkMode
-                  ? "border-white/10 hover:border-indigo-500/50 bg-gray-900"
-                  : "border-gray-200 hover:border-indigo-300 bg-white"
-              }`}
-            >
-              {/* Animated background gradient overlay */}
-              <div
-                className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
-                  isDarkMode
-                    ? "bg-gradient-to-br from-indigo-500/10 to-violet-500/10"
-                    : "bg-gradient-to-br from-indigo-100/50 to-violet-100/50"
-                }`}
-              ></div>
 
-              {/* Decorative elements */}
-              <div className="absolute top-6 right-6 w-3 h-3 bg-indigo-500 rounded-full animate-pulse"></div>
+          {/* Slider Container */}
+          <div className="flex items-center justify-center">
+            {/* Main Slider */}
+            <div className="flex items-center justify-center overflow-hidden rounded-3xl">
               <div
-                className="absolute top-12 right-8 w-2 h-2 bg-violet-500 rounded-full animate-pulse"
-                style={{ animationDelay: "1s" }}
-              ></div>
-              <div
-                className="absolute bottom-8 left-6 w-4 h-4 bg-purple-500/30 rounded-full animate-pulse"
-                style={{ animationDelay: "2s" }}
-              ></div>
-
-              <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 bg-indigo-500/10 rounded-lg">
-                    <MdWeb className="text-2xl text-indigo-500" />
-                  </div>
-                  <h3
-                    className={`text-2xl font-bold group-hover:text-indigo-400 transition-colors duration-300 ${
-                      isDarkMode ? "text-white" : "text-gray-900"
-                    }`}
+                className="flex items-center transition-transform duration-700 ease-in-out"
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {projects.map((project) => (
+                  <div
+                    key={project.id}
+                    className="w-full h-full flex-shrink-0 px-4"
                   >
-                    CiteMind
-                  </h3>
-                </div>
-
-                <p
-                  className={`mb-8 text-sm leading-relaxed ${
-                    isDarkMode ? "text-gray-400" : "text-gray-600"
-                  }`}
-                >
-                  An AI-powered research platform that transforms how you
-                  explore and visualize academic literature. CiteMind uses
-                  advanced AI and data processing with HuggingFace, Pinecone
-                  vector database, and custom AI pipelines to create interactive
-                  knowledge graphs and dynamic visualizations of research
-                  connections.
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {[
-                    "Next.js",
-                    "HuggingFace API",
-                    "Pinecone",
-                    "MongoDB",
-                    "Chart.js",
-                    "D3.js",
-                    "TypeScript",
-                  ].map((tech, key) => (
-                    <span
-                      key={key}
-                      className="bg-gradient-to-r from-indigo-500/10 to-violet-500/10 text-indigo-500 py-2 px-4 rounded-full text-sm font-medium hover:from-indigo-500/20 hover:to-violet-500/20 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-default"
+                    <div
+                      className={`group relative flex items-center justify-center overflow-hidden p-8 md:p-12 rounded-2xl border hover:shadow-2xl transition-all duration-500 min-h-[600px] ${
+                        isDarkMode
+                          ? `border-white/10 ${project.borderGradient} bg-gray-900/50 backdrop-blur-sm`
+                          : `border-gray-200 ${project.borderGradient} bg-white/80 backdrop-blur-sm`
+                      }`}
                     >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+                      {/* Background gradient overlay */}
+                      <div
+                        className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${
+                          isDarkMode ? project.gradient : project.gradient
+                        }`}
+                      ></div>
 
-                <div className="flex justify-between items-center">
-                  <a
-                    href="https://github.com/NishantRaj278/CiteMind"
-                    target="_blank"
-                    className={`flex items-center gap-2 font-medium transition-all duration-300 hover:-translate-y-0.5 ${
-                      isDarkMode
-                        ? "text-indigo-400 hover:text-indigo-300"
-                        : "text-indigo-600 hover:text-indigo-700"
-                    }`}
-                  >
-                    <MdCode className="text-lg" />
-                    View Code
-                  </a>
-                  <a
-                    href="https://citemiind.vercel.app/"
-                    target="_blank"
-                    className="bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 text-white px-6 py-3 rounded-xl transition-all duration-300 font-medium hover:shadow-xl hover:scale-105 group/btn"
-                  >
-                    <div className="flex items-center gap-2">
-                      <MdOutlinePlayCircleOutline className="text-lg group-hover/btn:animate-spin" />
-                      <span>Live Demo</span>
+                      {/* Content */}
+                      <div className="relative z-10 grid md:grid-cols-2 gap-8 h-full">
+                        {/* Project Info */}
+                        <div className="flex flex-col h-full">
+                          <div className="flex-grow">
+                            <div className="flex items-center gap-3 mb-6">
+                              <div
+                                className={`p-3 bg-gradient-to-r ${project.gradient} rounded-xl`}
+                              >
+                                <div
+                                  className={`text-3xl ${project.textColor}`}
+                                >
+                                  {project.icon}
+                                </div>
+                              </div>
+                              <h3
+                                className={`text-3xl md:text-4xl font-bold transition-colors duration-300 ${
+                                  isDarkMode ? "text-white" : "text-gray-900"
+                                }`}
+                              >
+                                {project.title}
+                              </h3>
+                            </div>
+
+                            <p
+                              className={`mb-8 text-lg leading-relaxed ${
+                                isDarkMode ? "text-gray-300" : "text-gray-600"
+                              }`}
+                            >
+                              {project.description}
+                            </p>
+
+                            {/* Tech Stack */}
+                            <div className="flex flex-wrap gap-3 mb-8">
+                              {project.technologies.map((tech, techIndex) => (
+                                <span
+                                  key={techIndex}
+                                  className={`bg-gradient-to-r ${project.gradient} ${project.textColor} py-2 px-4 rounded-full text-sm font-medium hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-default`}
+                                >
+                                  {tech}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Action Buttons - Always at bottom */}
+                          <div className="flex flex-wrap gap-4 mt-auto">
+                            <a
+                              href={project.githubUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={`flex items-center gap-3 font-medium text-lg transition-all duration-300 hover:-translate-y-1 hover:scale-105 ${
+                                isDarkMode
+                                  ? `${project.textColor} hover:text-white`
+                                  : `${project.textColor} hover:opacity-80`
+                              }`}
+                            >
+                              <MdCode className="text-2xl" />
+                              <span>View Code</span>
+                            </a>
+                            {project.liveUrl ? (
+                              <a
+                                href={project.liveUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`bg-gradient-to-r ${project.buttonGradient} text-white px-8 py-4 rounded-2xl transition-all duration-300 font-medium hover:shadow-2xl hover:scale-105 group/btn`}
+                              >
+                                <div className="flex items-center gap-3">
+                                  <MdOutlinePlayCircleOutline className="text-2xl group-hover/btn:animate-spin" />
+                                  <span className="text-lg">Live Demo</span>
+                                </div>
+                              </a>
+                            ) : (
+                              <div
+                                className={`bg-gradient-to-r ${project.buttonGradient} opacity-50 text-white px-8 py-4 rounded-2xl font-medium cursor-not-allowed`}
+                              >
+                                <div className="flex items-center gap-3">
+                                  <MdOutlinePlayCircleOutline className="text-2xl" />
+                                  <span className="text-lg">Coming Soon</span>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Project Image */}
+                        <div className="relative flex items-center justify-center h-full">
+                          <div
+                            className={`p-4 rounded-2xl bg-gradient-to-br ${
+                              project.gradient
+                            } border w-full ${
+                              isDarkMode ? "border-white/10" : "border-gray-200"
+                            } overflow-hidden`}
+                          >
+                            <div className="aspect-video w-full">
+                              <img
+                                src={`/${project.image}`}
+                                alt={`${project.title} preview`}
+                                className="w-full h-full object-cover rounded-xl shadow-lg hover:scale-105 transition-transform duration-300"
+                                onError={(e) => {
+                                  e.target.style.display = "none";
+                                  e.target.nextSibling.style.display = "flex";
+                                }}
+                              />
+                              {/* Fallback icon if image fails to load */}
+                              <div
+                                className={`hidden w-full h-full items-center justify-center bg-gradient-to-r ${project.gradient}`}
+                                style={{ display: "none" }}
+                              >
+                                <div
+                                  className={`text-6xl ${project.textColor}`}
+                                >
+                                  {project.icon}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </a>
-                </div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Socialure Project */}
-            <div
-              className={`group relative overflow-hidden p-8 rounded-2xl border hover:-translate-y-3 hover:shadow-2xl transition-all duration-500 hover-lift ${
+            {/* Navigation Arrows - Positioned outside the slider container */}
+            <button
+              onClick={prevSlide}
+              className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 p-3 rounded-full transition-all duration-300 hover:scale-110 z-10 ${
                 isDarkMode
-                  ? "border-white/10 hover:border-blue-500/50 bg-gray-900"
-                  : "border-gray-200 hover:border-blue-300 bg-white"
+                  ? "bg-gray-800/90 hover:bg-gray-700 text-white border border-gray-600"
+                  : "bg-white/90 hover:bg-gray-50 text-gray-900 border border-gray-200"
+              } backdrop-blur-sm shadow-lg hover:shadow-xl`}
+            >
+              <MdArrowBack className="text-2xl" />
+            </button>
+            <button
+              onClick={nextSlide}
+              className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 p-3 rounded-full transition-all duration-300 hover:scale-110 z-10 ${
+                isDarkMode
+                  ? "bg-gray-800/90 hover:bg-gray-700 text-white border border-gray-600"
+                  : "bg-white/90 hover:bg-gray-50 text-gray-900 border border-gray-200"
+              } backdrop-blur-sm shadow-lg hover:shadow-xl`}
+            >
+              <MdArrowForward className="text-2xl" />
+            </button>
+          </div>
+
+          {/* Slide Indicators */}
+          <div className="flex justify-center gap-3 mt-8">
+            {projects.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentSlide
+                    ? "bg-gradient-to-r from-blue-500 to-purple-500 scale-125"
+                    : isDarkMode
+                    ? "bg-gray-600 hover:bg-gray-500"
+                    : "bg-gray-300 hover:bg-gray-400"
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Auto-play toggle */}
+          <div className="flex justify-center mt-6">
+            <button
+              onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                isAutoPlaying
+                  ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white"
+                  : isDarkMode
+                  ? "bg-gray-800 text-gray-300 border border-gray-600"
+                  : "bg-white text-gray-600 border border-gray-200"
               }`}
             >
-              {/* Animated background gradient overlay */}
-              <div
-                className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
-                  isDarkMode
-                    ? "bg-gradient-to-br from-blue-500/10 to-cyan-500/10"
-                    : "bg-gradient-to-br from-blue-100/50 to-cyan-100/50"
-                }`}
-              ></div>
+              {isAutoPlaying ? "Pause Auto-play" : "Resume Auto-play"}
+            </button>
+          </div>
 
-              {/* Decorative elements */}
-              <div className="absolute top-6 right-6 w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
-              <div
-                className="absolute top-12 right-8 w-2 h-2 bg-cyan-500 rounded-full animate-pulse"
-                style={{ animationDelay: "1s" }}
-              ></div>
-              <div
-                className="absolute bottom-8 left-6 w-4 h-4 bg-purple-500/30 rounded-full animate-pulse"
-                style={{ animationDelay: "2s" }}
-              ></div>
-
-              <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 bg-blue-500/10 rounded-lg">
-                    <MdWeb className="text-2xl text-blue-500" />
+          {/* Project Grid Summary */}
+          <div className="mt-20">
+            <h3
+              className={`text-2xl font-bold text-center mb-8 ${
+                isDarkMode ? "text-white" : "text-gray-900"
+              }`}
+            >
+              All Projects Overview
+            </h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {projects.map((project, index) => (
+                <button
+                  key={project.id}
+                  onClick={() => goToSlide(index)}
+                  className={`p-4 rounded-xl border transition-all duration-300 hover:scale-105 hover:shadow-lg ${
+                    index === currentSlide
+                      ? `${project.borderGradient.replace(
+                          "hover:",
+                          ""
+                        )} bg-gradient-to-r ${project.gradient}`
+                      : isDarkMode
+                      ? "border-gray-700 bg-gray-800/50 hover:bg-gray-700"
+                      : "border-gray-200 bg-white hover:bg-gray-50"
+                  }`}
+                >
+                  <div
+                    className={`w-12 h-12 mx-auto mb-3 rounded-lg bg-gradient-to-r ${project.gradient} flex items-center justify-center`}
+                  >
+                    <div className={`text-xl ${project.textColor}`}>
+                      {project.icon}
+                    </div>
                   </div>
-                  <h3
-                    className={`text-2xl font-bold group-hover:text-blue-400 transition-colors duration-300 ${
+                  <h4
+                    className={`text-sm font-medium ${
                       isDarkMode ? "text-white" : "text-gray-900"
                     }`}
                   >
-                    Socialure
-                  </h3>
-                </div>
-
-                <p
-                  className={`mb-6 leading-relaxed text-sm ${
-                    isDarkMode ? "text-gray-400" : "text-gray-600"
-                  }`}
-                >
-                  A full-stack social media platform enabling users to connect,
-                  share posts, and interact in real-time through a clean and
-                  responsive UI with modern features.
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {[
-                    "Next.js",
-                    "PostgreSQL",
-                    "Prisma",
-                    "TypeScript",
-                    "Tailwind CSS",
-                  ].map((tech, key) => (
-                    <span
-                      key={key}
-                      className="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 text-blue-500 py-2 px-4 rounded-full text-sm font-medium hover:from-blue-500/20 hover:to-cyan-500/20 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-default"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex justify-between items-center">
-                  <a
-                    href="https://github.com/NishantRaj278/Socialure"
-                    target="_blank"
-                    className={`flex items-center gap-2 font-medium transition-all duration-300 hover:-translate-y-0.5 ${
-                      isDarkMode
-                        ? "text-blue-400 hover:text-blue-300"
-                        : "text-blue-600 hover:text-blue-700"
-                    }`}
-                  >
-                    <MdCode className="text-lg" />
-                    View Code
-                  </a>
-                  <a
-                    href="https://socialure.vercel.app/"
-                    target="_blank"
-                    className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-6 py-3 rounded-xl transition-all duration-300 font-medium hover:shadow-xl hover:scale-105 group/btn"
-                  >
-                    <div className="flex items-center gap-2">
-                      <MdOutlinePlayCircleOutline className="text-lg group-hover/btn:animate-spin" />
-                      <span>Live Demo</span>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Inklet Project */}
-            <div
-              className={`group relative overflow-hidden p-8 rounded-2xl border hover:-translate-y-3 hover:shadow-2xl transition-all duration-500 hover-lift ${
-                isDarkMode
-                  ? "border-white/10 hover:border-green-500/50 bg-gray-900"
-                  : "border-gray-200 hover:border-green-300 bg-white"
-              }`}
-            >
-              {/* Animated background gradient overlay */}
-              <div
-                className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
-                  isDarkMode
-                    ? "bg-gradient-to-br from-green-500/10 to-emerald-500/10"
-                    : "bg-gradient-to-br from-green-100/50 to-emerald-100/50"
-                }`}
-              ></div>
-
-              {/* Decorative elements */}
-              <div className="absolute top-6 right-6 w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-              <div
-                className="absolute top-12 right-8 w-2 h-2 bg-emerald-500 rounded-full animate-pulse"
-                style={{ animationDelay: "1s" }}
-              ></div>
-              <div
-                className="absolute bottom-8 left-6 w-4 h-4 bg-teal-500/30 rounded-full animate-pulse"
-                style={{ animationDelay: "2s" }}
-              ></div>
-
-              <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 bg-green-500/10 rounded-lg">
-                    <MdCode className="text-2xl text-green-500" />
-                  </div>
-                  <h3
-                    className={`text-2xl font-bold group-hover:text-green-400 transition-colors duration-300 ${
-                      isDarkMode ? "text-white" : "text-gray-900"
-                    }`}
-                  >
-                    Inklet
-                  </h3>
-                </div>
-
-                <p
-                  className={`mb-6 text-sm leading-relaxed ${
-                    isDarkMode ? "text-gray-400" : "text-gray-600"
-                  }`}
-                >
-                  A dynamic blogging platform where users can create, edit, and
-                  interact with blog posts in a seamless, responsive environment
-                  with rich content features.
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {[
-                    "Next.js",
-                    "MongoDB",
-                    "Prisma",
-                    "TypeScript",
-                    "Tailwind CSS",
-                  ].map((tech, key) => (
-                    <span
-                      key={key}
-                      className="bg-gradient-to-r from-green-500/10 to-emerald-500/10 text-green-500 py-2 px-4 rounded-full text-sm font-medium hover:from-green-500/20 hover:to-emerald-500/20 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-default"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex justify-between items-center">
-                  <a
-                    href="https://github.com/NishantRaj278/Inklet"
-                    target="_blank"
-                    className={`flex items-center gap-2 font-medium transition-all duration-300 hover:-translate-y-0.5 ${
-                      isDarkMode
-                        ? "text-green-400 hover:text-green-300"
-                        : "text-green-600 hover:text-green-700"
-                    }`}
-                  >
-                    <MdCode className="text-lg" />
-                    View Code
-                  </a>
-                  <a
-                    href="https://inklet-seven.vercel.app/"
-                    target="_blank"
-                    className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white px-6 py-3 rounded-xl transition-all duration-300 font-medium hover:shadow-xl hover:scale-105 group/btn"
-                  >
-                    <div className="flex items-center gap-2">
-                      <MdOutlinePlayCircleOutline className="text-lg group-hover/btn:animate-spin" />
-                      <span>Live Demo</span>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* HelpHive Project */}
-            <div
-              className={`group relative overflow-hidden p-8 rounded-2xl border hover:-translate-y-3 hover:shadow-2xl transition-all duration-500 hover-lift ${
-                isDarkMode
-                  ? "border-white/10 hover:border-orange-500/50 bg-gray-900"
-                  : "border-gray-200 hover:border-orange-300 bg-white"
-              }`}
-            >
-              {/* Animated background gradient overlay */}
-              <div
-                className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
-                  isDarkMode
-                    ? "bg-gradient-to-br from-orange-500/10 to-amber-500/10"
-                    : "bg-gradient-to-br from-orange-100/50 to-amber-100/50"
-                }`}
-              ></div>
-
-              {/* Decorative elements */}
-              <div className="absolute top-6 right-6 w-3 h-3 bg-orange-500 rounded-full animate-pulse"></div>
-              <div
-                className="absolute top-12 right-8 w-2 h-2 bg-amber-500 rounded-full animate-pulse"
-                style={{ animationDelay: "1s" }}
-              ></div>
-              <div
-                className="absolute bottom-8 left-6 w-4 h-4 bg-yellow-500/30 rounded-full animate-pulse"
-                style={{ animationDelay: "2s" }}
-              ></div>
-
-              <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 bg-orange-500/10 rounded-lg">
-                    <MdWeb className="text-2xl text-orange-500" />
-                  </div>
-                  <h3
-                    className={`text-2xl font-bold group-hover:text-orange-400 transition-colors duration-300 ${
-                      isDarkMode ? "text-white" : "text-gray-900"
-                    }`}
-                  >
-                    HelpHive
-                  </h3>
-                </div>
-
-                <p
-                  className={`mb-6 text-sm leading-relaxed ${
-                    isDarkMode ? "text-gray-400" : "text-gray-600"
-                  }`}
-                >
-                  A community platform where neighbors connect to offer and
-                  request help, report local issues, and strengthen community
-                  bonds through real-time messaging and collaborative
-                  problem-solving.
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {[
-                    "React",
-                    "Node.js",
-                    "Express",
-                    "MongoDB",
-                    "Socket.IO",
-                    "Tailwind CSS",
-                  ].map((tech, key) => (
-                    <span
-                      key={key}
-                      className="bg-gradient-to-r from-orange-500/10 to-amber-500/10 text-orange-500 py-2 px-4 rounded-full text-sm font-medium hover:from-orange-500/20 hover:to-amber-500/20 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-default"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex justify-between items-center">
-                  <a
-                    href="https://github.com/NishantRaj278/HelpHive"
-                    target="_blank"
-                    className={`flex items-center gap-2 font-medium transition-all duration-300 hover:-translate-y-0.5 ${
-                      isDarkMode
-                        ? "text-orange-400 hover:text-orange-300"
-                        : "text-orange-600 hover:text-orange-700"
-                    }`}
-                  >
-                    <MdCode className="text-lg" />
-                    View Code
-                  </a>
-                  <div className="bg-gradient-to-r from-orange-500/50 to-amber-500/50 text-white px-6 py-3 rounded-xl transition-all duration-300 font-medium cursor-not-allowed opacity-70">
-                    <div className="flex items-center gap-2">
-                      <MdOutlinePlayCircleOutline className="text-lg" />
-                      <span>Coming Soon</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* CraftAI Project */}
-            <div
-              className={`group relative overflow-hidden p-8 rounded-2xl border hover:-translate-y-3 hover:shadow-2xl transition-all duration-500 hover-lift ${
-                isDarkMode
-                  ? "border-white/10 hover:border-cyan-500/50 bg-gray-900"
-                  : "border-gray-200 hover:border-cyan-300 bg-white"
-              }`}
-            >
-              {/* Animated background gradient overlay */}
-              <div
-                className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
-                  isDarkMode
-                    ? "bg-gradient-to-br from-cyan-500/10 to-blue-500/10"
-                    : "bg-gradient-to-br from-cyan-100/50 to-blue-100/50"
-                }`}
-              ></div>
-
-              {/* Decorative elements */}
-              <div className="absolute top-6 right-6 w-3 h-3 bg-cyan-500 rounded-full animate-pulse"></div>
-              <div
-                className="absolute top-12 right-8 w-2 h-2 bg-blue-500 rounded-full animate-pulse"
-                style={{ animationDelay: "1s" }}
-              ></div>
-              <div
-                className="absolute bottom-8 left-6 w-4 h-4 bg-indigo-500/30 rounded-full animate-pulse"
-                style={{ animationDelay: "2s" }}
-              ></div>
-
-              <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 bg-cyan-500/10 rounded-lg">
-                    <MdWeb className="text-2xl text-cyan-500" />
-                  </div>
-                  <h3
-                    className={`text-2xl font-bold group-hover:text-cyan-400 transition-colors duration-300 ${
-                      isDarkMode ? "text-white" : "text-gray-900"
-                    }`}
-                  >
-                    CraftAI
-                  </h3>
-                </div>
-
-                <p
-                  className={`mb-8 text-sm leading-relaxed ${
-                    isDarkMode ? "text-gray-400" : "text-gray-600"
-                  }`}
-                >
-                  CraftAI is an AI-powered developer tool that instantly
-                  generates clean, production-ready React components from your
-                  text prompts. CraftAI helps you turn ideas into working React
-                  code in seconds.
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {[
-                    "Next.js",
-                    "MongoDB",
-                    "Node.js",
-                    "Express",
-                    "TypeScript",
-                    "Tailwind CSS",
-                  ].map((tech, key) => (
-                    <span
-                      key={key}
-                      className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 text-cyan-500 py-2 px-4 rounded-full text-sm font-medium hover:from-cyan-500/20 hover:to-blue-500/20 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-default"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex justify-between items-center">
-                  <a
-                    href="https://github.com/NishantRaj278/craftAI"
-                    target="_blank"
-                    className={`flex items-center gap-2 font-medium transition-all duration-300 hover:-translate-y-0.5 ${
-                      isDarkMode
-                        ? "text-cyan-400 hover:text-cyan-300"
-                        : "text-cyan-600 hover:text-cyan-700"
-                    }`}
-                  >
-                    <MdCode className="text-lg" />
-                    View Code
-                  </a>
-                  <a
-                    href="https://craft-ai-pi.vercel.app/"
-                    target="_blank"
-                    className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-6 py-3 rounded-xl transition-all duration-300 font-medium hover:shadow-xl hover:scale-105 group/btn"
-                  >
-                    <div className="flex items-center gap-2">
-                      <MdOutlinePlayCircleOutline className="text-lg group-hover/btn:animate-spin" />
-                      <span>Live Demo</span>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* ChatNest Project */}
-            <div
-              className={`group relative overflow-hidden p-8 rounded-2xl border hover:-translate-y-3 hover:shadow-2xl transition-all duration-500 hover-lift ${
-                isDarkMode
-                  ? "border-white/10 hover:border-purple-500/50 bg-gray-900"
-                  : "border-gray-200 hover:border-purple-300 bg-white"
-              }`}
-            >
-              {/* Animated background gradient overlay */}
-              <div
-                className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
-                  isDarkMode
-                    ? "bg-gradient-to-br from-purple-500/10 to-pink-500/10"
-                    : "bg-gradient-to-br from-purple-100/50 to-pink-100/50"
-                }`}
-              ></div>
-
-              {/* Decorative elements */}
-              <div className="absolute top-6 right-6 w-3 h-3 bg-purple-500 rounded-full animate-pulse"></div>
-              <div
-                className="absolute top-12 right-8 w-2 h-2 bg-pink-500 rounded-full animate-pulse"
-                style={{ animationDelay: "1s" }}
-              ></div>
-              <div
-                className="absolute bottom-8 left-6 w-4 h-4 bg-indigo-500/30 rounded-full animate-pulse"
-                style={{ animationDelay: "2s" }}
-              ></div>
-
-              <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 bg-purple-500/10 rounded-lg">
-                    <MdWeb className="text-2xl text-purple-500" />
-                  </div>
-                  <h3
-                    className={`text-2xl font-bold group-hover:text-purple-400 transition-colors duration-300 ${
-                      isDarkMode ? "text-white" : "text-gray-900"
-                    }`}
-                  >
-                    ChatNest
-                  </h3>
-                </div>
-
-                <p
-                  className={`mb-6 leading-relaxed ${
-                    isDarkMode ? "text-gray-400" : "text-gray-600"
-                  }`}
-                >
-                  A real-time chat application supporting instant messaging and
-                  media sharing with a responsive, themeable UI and seamless
-                  user experience.
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {[
-                    "React",
-                    "Node.js",
-                    "Express",
-                    "MongoDB",
-                    "Tailwind CSS",
-                    "Socket.IO",
-                  ].map((tech, key) => (
-                    <span
-                      key={key}
-                      className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 text-purple-500 py-2 px-4 rounded-full text-sm font-medium hover:from-purple-500/20 hover:to-pink-500/20 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-default"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex justify-between items-center">
-                  <a
-                    href="https://github.com/NishantRaj278/ChatNest"
-                    target="_blank"
-                    className={`flex items-center gap-2 font-medium transition-all duration-300 hover:-translate-y-0.5 ${
-                      isDarkMode
-                        ? "text-purple-400 hover:text-purple-300"
-                        : "text-purple-600 hover:text-purple-700"
-                    }`}
-                  >
-                    <MdCode className="text-lg" />
-                    View Code
-                  </a>
-                  <a
-                    href="https://chatnest-1-1.onrender.com/"
-                    target="_blank"
-                    className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-3 rounded-xl transition-all duration-300 font-medium hover:shadow-xl hover:scale-105 group/btn"
-                  >
-                    <div className="flex items-center gap-2">
-                      <MdOutlinePlayCircleOutline className="text-lg group-hover/btn:animate-spin" />
-                      <span>Live Demo</span>
-                    </div>
-                  </a>
-                </div>
-              </div>
+                    {project.title}
+                  </h4>
+                </button>
+              ))}
             </div>
           </div>
         </div>
