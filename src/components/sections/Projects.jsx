@@ -36,6 +36,107 @@ export const Projects = ({ isDarkMode }) => {
             </p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* CiteMind Project */}
+            <div
+              className={`group relative overflow-hidden p-8 rounded-2xl border hover:-translate-y-3 hover:shadow-2xl transition-all duration-500 hover-lift ${
+                isDarkMode
+                  ? "border-white/10 hover:border-indigo-500/50 bg-gray-900"
+                  : "border-gray-200 hover:border-indigo-300 bg-white"
+              }`}
+            >
+              {/* Animated background gradient overlay */}
+              <div
+                className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
+                  isDarkMode
+                    ? "bg-gradient-to-br from-indigo-500/10 to-violet-500/10"
+                    : "bg-gradient-to-br from-indigo-100/50 to-violet-100/50"
+                }`}
+              ></div>
+
+              {/* Decorative elements */}
+              <div className="absolute top-6 right-6 w-3 h-3 bg-indigo-500 rounded-full animate-pulse"></div>
+              <div
+                className="absolute top-12 right-8 w-2 h-2 bg-violet-500 rounded-full animate-pulse"
+                style={{ animationDelay: "1s" }}
+              ></div>
+              <div
+                className="absolute bottom-8 left-6 w-4 h-4 bg-purple-500/30 rounded-full animate-pulse"
+                style={{ animationDelay: "2s" }}
+              ></div>
+
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-indigo-500/10 rounded-lg">
+                    <MdWeb className="text-2xl text-indigo-500" />
+                  </div>
+                  <h3
+                    className={`text-2xl font-bold group-hover:text-indigo-400 transition-colors duration-300 ${
+                      isDarkMode ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    CiteMind
+                  </h3>
+                </div>
+
+                <p
+                  className={`mb-8 text-sm leading-relaxed ${
+                    isDarkMode ? "text-gray-400" : "text-gray-600"
+                  }`}
+                >
+                  An AI-powered research platform that transforms how you
+                  explore and visualize academic literature. CiteMind uses
+                  advanced AI and data processing with HuggingFace, Pinecone
+                  vector database, and custom AI pipelines to create interactive
+                  knowledge graphs and dynamic visualizations of research
+                  connections.
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {[
+                    "Next.js",
+                    "HuggingFace API",
+                    "Pinecone",
+                    "MongoDB",
+                    "Chart.js",
+                    "D3.js",
+                    "TypeScript",
+                  ].map((tech, key) => (
+                    <span
+                      key={key}
+                      className="bg-gradient-to-r from-indigo-500/10 to-violet-500/10 text-indigo-500 py-2 px-4 rounded-full text-sm font-medium hover:from-indigo-500/20 hover:to-violet-500/20 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-default"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex justify-between items-center">
+                  <a
+                    href="https://github.com/NishantRaj278/CiteMind"
+                    target="_blank"
+                    className={`flex items-center gap-2 font-medium transition-all duration-300 hover:-translate-y-0.5 ${
+                      isDarkMode
+                        ? "text-indigo-400 hover:text-indigo-300"
+                        : "text-indigo-600 hover:text-indigo-700"
+                    }`}
+                  >
+                    <MdCode className="text-lg" />
+                    View Code
+                  </a>
+                  <a
+                    href="https://citemiind.vercel.app/"
+                    target="_blank"
+                    className="bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 text-white px-6 py-3 rounded-xl transition-all duration-300 font-medium hover:shadow-xl hover:scale-105 group/btn"
+                  >
+                    <div className="flex items-center gap-2">
+                      <MdOutlinePlayCircleOutline className="text-lg group-hover/btn:animate-spin" />
+                      <span>Live Demo</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+
             {/* Socialure Project */}
             <div
               className={`group relative overflow-hidden p-8 rounded-2xl border hover:-translate-y-3 hover:shadow-2xl transition-all duration-500 hover-lift ${
@@ -79,7 +180,7 @@ export const Projects = ({ isDarkMode }) => {
                 </div>
 
                 <p
-                  className={`mb-6 leading-relaxed ${
+                  className={`mb-6 leading-relaxed text-sm ${
                     isDarkMode ? "text-gray-400" : "text-gray-600"
                   }`}
                 >
@@ -175,7 +276,7 @@ export const Projects = ({ isDarkMode }) => {
                 </div>
 
                 <p
-                  className={`mb-6 leading-relaxed ${
+                  className={`mb-6 text-sm leading-relaxed ${
                     isDarkMode ? "text-gray-400" : "text-gray-600"
                   }`}
                 >
@@ -271,7 +372,7 @@ export const Projects = ({ isDarkMode }) => {
                 </div>
 
                 <p
-                  className={`mb-6 leading-relaxed ${
+                  className={`mb-6 text-sm leading-relaxed ${
                     isDarkMode ? "text-gray-400" : "text-gray-600"
                   }`}
                 >
@@ -365,7 +466,7 @@ export const Projects = ({ isDarkMode }) => {
                 </div>
 
                 <p
-                  className={`mb-8 leading-relaxed ${
+                  className={`mb-8 text-sm leading-relaxed ${
                     isDarkMode ? "text-gray-400" : "text-gray-600"
                   }`}
                 >

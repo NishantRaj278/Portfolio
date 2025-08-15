@@ -51,6 +51,16 @@ html {
   background: linear-gradient(45deg, #2563eb, #0891b2);
 }
 
+/* Hide scrollbar for carousel */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 @layer utilities {
   @keyframes blink {
     0%,
