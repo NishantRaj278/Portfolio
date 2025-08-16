@@ -15,6 +15,7 @@ export const About = ({ isDarkMode }) => {
     "MySQL",
     "PostgreSQL",
     "MongoDB",
+    "Express",
     "Prisma",
     "NestJS",
   ];

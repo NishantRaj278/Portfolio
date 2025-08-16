@@ -243,17 +243,10 @@ export const Projects = ({ isDarkMode }) => {
                     <div
                       className={`group relative flex items-center justify-center overflow-hidden p-8 md:p-12 rounded-2xl border hover:shadow-2xl transition-all duration-500 min-h-[600px] ${
                         isDarkMode
-                          ? `border-white/10 ${project.borderGradient} bg-gray-900/50 backdrop-blur-sm`
-                          : `border-gray-200 ${project.borderGradient} bg-white/80 backdrop-blur-sm`
+                          ? `border-white/10 bg-gray-900/50 backdrop-blur-sm`
+                          : `border-gray-200 bg-white/80 backdrop-blur-sm`
                       }`}
                     >
-                      {/* Background gradient overlay */}
-                      <div
-                        className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${
-                          isDarkMode ? project.gradient : project.gradient
-                        }`}
-                      ></div>
-
                       {/* Content */}
                       <div className="relative z-10 grid md:grid-cols-2 gap-8 h-full">
                         {/* Project Info */}
@@ -305,11 +298,7 @@ export const Projects = ({ isDarkMode }) => {
                               href={project.githubUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className={`flex items-center gap-3 font-medium text-lg transition-all duration-300 hover:-translate-y-1 hover:scale-105 ${
-                                isDarkMode
-                                  ? `${project.textColor} hover:text-white`
-                                  : `${project.textColor} hover:opacity-80`
-                              }`}
+                              className={`flex items-center gap-3 font-medium text-lg transition-all duration-300 hover:-translate-y-1 hover:scale-105 ${project.textColor}`}
                             >
                               <MdCode className="text-2xl" />
                               <span>View Code</span>
@@ -384,8 +373,8 @@ export const Projects = ({ isDarkMode }) => {
               onClick={prevSlide}
               className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 p-3 rounded-full transition-all duration-300 hover:scale-110 z-10 ${
                 isDarkMode
-                  ? "bg-gray-800/90 hover:bg-gray-700 text-white border border-gray-600"
-                  : "bg-white/90 hover:bg-gray-50 text-gray-900 border border-gray-200"
+                  ? "bg-gray-800/90 text-white border border-gray-600"
+                  : "bg-white/90 text-gray-900 border border-gray-200"
               } backdrop-blur-sm shadow-lg hover:shadow-xl`}
             >
               <MdArrowBack className="text-2xl" />
@@ -394,8 +383,8 @@ export const Projects = ({ isDarkMode }) => {
               onClick={nextSlide}
               className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 p-3 rounded-full transition-all duration-300 hover:scale-110 z-10 ${
                 isDarkMode
-                  ? "bg-gray-800/90 hover:bg-gray-700 text-white border border-gray-600"
-                  : "bg-white/90 hover:bg-gray-50 text-gray-900 border border-gray-200"
+                  ? "bg-gray-800/90 text-white border border-gray-600"
+                  : "bg-white/90 text-gray-900 border border-gray-200"
               } backdrop-blur-sm shadow-lg hover:shadow-xl`}
             >
               <MdArrowForward className="text-2xl" />
@@ -408,12 +397,12 @@ export const Projects = ({ isDarkMode }) => {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`w-3 h-3 rounded-full transition-all duration-300 hover:scale-125 ${
                   index === currentSlide
                     ? "bg-gradient-to-r from-blue-500 to-purple-500 scale-125"
                     : isDarkMode
-                    ? "bg-gray-600 hover:bg-gray-500"
-                    : "bg-gray-300 hover:bg-gray-400"
+                    ? "bg-gray-600"
+                    : "bg-gray-300"
                 }`}
               />
             ))}
@@ -456,8 +445,8 @@ export const Projects = ({ isDarkMode }) => {
                           ""
                         )} bg-gradient-to-r ${project.gradient}`
                       : isDarkMode
-                      ? "border-gray-700 bg-gray-800/50 hover:bg-gray-700"
-                      : "border-gray-200 bg-white hover:bg-gray-50"
+                      ? "border-gray-700 bg-gray-800/50"
+                      : "border-gray-200 bg-white"
                   }`}
                 >
                   <div
