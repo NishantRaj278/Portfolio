@@ -128,7 +128,7 @@ export const Projects = ({ isDarkMode }) => {
         "Tailwind CSS",
       ],
       githubUrl: "https://github.com/NishantRaj278/HelpHive",
-      liveUrl: null,
+      liveUrl: "https://helphiive.vercel.app/",
       color: "orange",
       gradient: "from-orange-500/10 to-amber-500/10",
       borderGradient: "hover:border-orange-500/50",
