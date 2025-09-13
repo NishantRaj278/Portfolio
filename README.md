@@ -1,9 +1,6 @@
 # 🚀 Nishant's Portfolio
 
 A modern, responsive developer portfolio built with React, Vite, and Tailwind CSS. Showcasing full-stack projects, AI-powered tools, and modern web solutions.
-
-![Portfolio Banner](public/nwordlogo.png)
-
 ---
 
 ## 🌟 Features
@@ -62,7 +59,7 @@ A modern, responsive developer portfolio built with React, Vite, and Tailwind CS
 
 ## 📬 Contact
 
-Want to connect or collaborate? Reach out via the contact form on the site or email me at [nishant.raj278@gmail.com](mailto:nishant.raj278@gmail.com).
+Want to connect or collaborate? Reach out via the contact form on the site or email me at [nishant.raj278@gmail.com](mailto:rnishant721@gmail.com).
 
 ---
 
