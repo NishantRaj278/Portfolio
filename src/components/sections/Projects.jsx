@@ -228,9 +228,9 @@ export const Projects = ({ isDarkMode }) => {
           </div>
 
           {/* Slider Container */}
-          <div className="flex items-center justify-center">
+          <div className="relative flex items-center justify-center px-4 sm:px-0">
             {/* Main Slider */}
-            <div className="flex items-center justify-center overflow-hidden rounded-3xl">
+            <div className="w-full max-w-6xl overflow-hidden rounded-3xl">
               <div
                 className="flex items-center transition-transform duration-700 ease-in-out"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -238,32 +238,32 @@ export const Projects = ({ isDarkMode }) => {
                 {projects.map((project) => (
                   <div
                     key={project.id}
-                    className="w-full h-full flex-shrink-0 px-4"
+                    className="w-full h-full flex-shrink-0 px-2 sm:px-4"
                   >
                     <div
-                      className={`group relative flex items-center justify-center overflow-hidden p-8 md:p-12 rounded-2xl border hover:shadow-2xl transition-all duration-500 min-h-[600px] ${
+                      className={`group relative flex items-center justify-center overflow-hidden p-4 sm:p-6 lg:p-8 xl:p-12 rounded-2xl border hover:shadow-2xl transition-all duration-500 min-h-[500px] sm:min-h-[600px] ${
                         isDarkMode
                           ? `border-white/10 bg-gray-900/50 backdrop-blur-sm`
                           : `border-gray-200 bg-white/80 backdrop-blur-sm`
                       }`}
                     >
                       {/* Content */}
-                      <div className="relative z-10 grid md:grid-cols-2 gap-8 h-full">
+                      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 h-full">
                         {/* Project Info */}
-                        <div className="flex flex-col h-full">
+                        <div className="flex flex-col h-full order-2 lg:order-1">
                           <div className="flex-grow">
-                            <div className="flex items-center gap-3 mb-6">
+                            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
                               <div
-                                className={`p-3 bg-gradient-to-r ${project.gradient} rounded-xl`}
+                                className={`p-2 sm:p-3 bg-gradient-to-r ${project.gradient} rounded-xl`}
                               >
                                 <div
-                                  className={`text-3xl ${project.textColor}`}
+                                  className={`text-2xl sm:text-3xl ${project.textColor}`}
                                 >
                                   {project.icon}
                                 </div>
                               </div>
                               <h3
-                                className={`text-3xl md:text-4xl font-bold transition-colors duration-300 ${
+                                className={`text-2xl sm:text-3xl lg:text-4xl font-bold transition-colors duration-300 ${
                                   isDarkMode ? "text-white" : "text-gray-900"
                                 }`}
                               >
@@ -272,7 +272,7 @@ export const Projects = ({ isDarkMode }) => {
                             </div>
 
                             <p
-                              className={`mb-8 text-lg leading-relaxed ${
+                              className={`mb-6 sm:mb-8 text-base sm:text-lg leading-relaxed ${
                                 isDarkMode ? "text-gray-300" : "text-gray-600"
                               }`}
                             >
@@ -280,7 +280,7 @@ export const Projects = ({ isDarkMode }) => {
                             </p>
 
                             {/* Tech Stack */}
-                            <div className="flex flex-wrap gap-3 mb-8">
+                            <div className="flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8">
                               {project.technologies.map((tech, techIndex) => (
                                 <span
                                   key={techIndex}
@@ -293,14 +293,14 @@ export const Projects = ({ isDarkMode }) => {
                           </div>
 
                           {/* Action Buttons - Always at bottom */}
-                          <div className="flex flex-wrap gap-4 mt-auto">
+                          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-auto">
                             <a
                               href={project.githubUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className={`flex items-center gap-3 font-medium text-lg transition-all duration-300 hover:-translate-y-1 hover:scale-105 ${project.textColor}`}
+                              className={`flex items-center justify-center sm:justify-start gap-3 font-medium text-base sm:text-lg transition-all duration-300 hover:-translate-y-1 hover:scale-105 ${project.textColor}`}
                             >
-                              <MdCode className="text-2xl" />
+                              <MdCode className="text-xl sm:text-2xl" />
                               <span>View Code</span>
                             </a>
                             {project.liveUrl ? (
@@ -308,20 +308,24 @@ export const Projects = ({ isDarkMode }) => {
                                 href={project.liveUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={`bg-gradient-to-r ${project.buttonGradient} text-white px-8 py-4 rounded-2xl transition-all duration-300 font-medium hover:shadow-2xl hover:scale-105 group/btn`}
+                                className={`bg-gradient-to-r ${project.buttonGradient} text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl transition-all duration-300 font-medium hover:shadow-2xl hover:scale-105 group/btn text-center`}
                               >
-                                <div className="flex items-center gap-3">
-                                  <MdOutlinePlayCircleOutline className="text-2xl group-hover/btn:animate-spin" />
-                                  <span className="text-lg">Live Demo</span>
+                                <div className="flex items-center justify-center gap-2 sm:gap-3">
+                                  <MdOutlinePlayCircleOutline className="text-xl sm:text-2xl group-hover/btn:animate-spin" />
+                                  <span className="text-base sm:text-lg">
+                                    Live Demo
+                                  </span>
                                 </div>
                               </a>
                             ) : (
                               <div
-                                className={`bg-gradient-to-r ${project.buttonGradient} opacity-50 text-white px-8 py-4 rounded-2xl font-medium cursor-not-allowed`}
+                                className={`bg-gradient-to-r ${project.buttonGradient} opacity-50 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-medium cursor-not-allowed text-center`}
                               >
-                                <div className="flex items-center gap-3">
-                                  <MdOutlinePlayCircleOutline className="text-2xl" />
-                                  <span className="text-lg">Coming Soon</span>
+                                <div className="flex items-center justify-center gap-2 sm:gap-3">
+                                  <MdOutlinePlayCircleOutline className="text-xl sm:text-2xl" />
+                                  <span className="text-base sm:text-lg">
+                                    Coming Soon
+                                  </span>
                                 </div>
                               </div>
                             )}
@@ -329,7 +333,7 @@ export const Projects = ({ isDarkMode }) => {
                         </div>
 
                         {/* Project Image */}
-                        <div className="relative flex items-center justify-center h-full">
+                        <div className="relative flex items-center justify-center h-full order-1 lg:order-2">
                           <div
                             className={`p-4 rounded-2xl bg-gradient-to-br ${
                               project.gradient
@@ -371,33 +375,33 @@ export const Projects = ({ isDarkMode }) => {
             {/* Navigation Arrows - Positioned outside the slider container */}
             <button
               onClick={prevSlide}
-              className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 p-3 rounded-full transition-all duration-300 hover:scale-110 z-10 ${
+              className={`absolute left-2 sm:left-0 top-1/2 -translate-y-1/2 sm:-translate-x-12 p-2 sm:p-3 rounded-full transition-all duration-300 hover:scale-110 z-10 ${
                 isDarkMode
                   ? "bg-gray-800/90 text-white border border-gray-600"
                   : "bg-white/90 text-gray-900 border border-gray-200"
               } backdrop-blur-sm shadow-lg hover:shadow-xl`}
             >
-              <MdArrowBack className="text-2xl" />
+              <MdArrowBack className="text-xl sm:text-2xl" />
             </button>
             <button
               onClick={nextSlide}
-              className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 p-3 rounded-full transition-all duration-300 hover:scale-110 z-10 ${
+              className={`absolute right-2 sm:right-0 top-1/2 -translate-y-1/2 sm:translate-x-12 p-2 sm:p-3 rounded-full transition-all duration-300 hover:scale-110 z-10 ${
                 isDarkMode
                   ? "bg-gray-800/90 text-white border border-gray-600"
                   : "bg-white/90 text-gray-900 border border-gray-200"
               } backdrop-blur-sm shadow-lg hover:shadow-xl`}
             >
-              <MdArrowForward className="text-2xl" />
+              <MdArrowForward className="text-xl sm:text-2xl" />
             </button>
           </div>
 
           {/* Slide Indicators */}
-          <div className="flex justify-center gap-3 mt-8">
+          <div className="flex justify-center gap-2 sm:gap-3 mt-6 sm:mt-8">
             {projects.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 hover:scale-125 ${
+                className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 hover:scale-125 ${
                   index === currentSlide
                     ? "bg-gradient-to-r from-blue-500 to-purple-500 scale-125"
                     : isDarkMode
@@ -409,10 +413,10 @@ export const Projects = ({ isDarkMode }) => {
           </div>
 
           {/* Auto-play toggle */}
-          <div className="flex justify-center mt-6">
+          <div className="flex justify-center mt-4 sm:mt-6">
             <button
               onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+              className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
                 isAutoPlaying
                   ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white"
                   : isDarkMode
@@ -425,20 +429,20 @@ export const Projects = ({ isDarkMode }) => {
           </div>
 
           {/* Project Grid Summary */}
-          <div className="mt-20">
+          <div className="mt-16 sm:mt-20">
             <h3
-              className={`text-2xl font-bold text-center mb-8 ${
+              className={`text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 ${
                 isDarkMode ? "text-white" : "text-gray-900"
               }`}
             >
               All Projects Overview
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
               {projects.map((project, index) => (
                 <button
                   key={project.id}
                   onClick={() => goToSlide(index)}
-                  className={`p-4 rounded-xl border transition-all duration-300 hover:scale-105 hover:shadow-lg ${
+                  className={`p-3 sm:p-4 rounded-xl border transition-all duration-300 hover:scale-105 hover:shadow-lg ${
                     index === currentSlide
                       ? `${project.borderGradient.replace(
                           "hover:",
@@ -450,14 +454,14 @@ export const Projects = ({ isDarkMode }) => {
                   }`}
                 >
                   <div
-                    className={`w-12 h-12 mx-auto mb-3 rounded-lg bg-gradient-to-r ${project.gradient} flex items-center justify-center`}
+                    className={`w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 rounded-lg bg-gradient-to-r ${project.gradient} flex items-center justify-center`}
                   >
-                    <div className={`text-xl ${project.textColor}`}>
+                    <div className={`text-lg sm:text-xl ${project.textColor}`}>
                       {project.icon}
                     </div>
                   </div>
                   <h4
-                    className={`text-sm font-medium ${
+                    className={`text-xs sm:text-sm font-medium ${
                       isDarkMode ? "text-white" : "text-gray-900"
                     }`}
                   >
